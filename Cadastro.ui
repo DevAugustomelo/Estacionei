@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CADASTRO</class>
+ <widget class="QMainWindow" name="CADASTRO">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>200</width>
+    <height>200</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>500</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Estacionei</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(86, 86, 86);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="lbl_text">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>441</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(190, 190, 42);
+font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+border-radius:12px;
+border-color:rgb(150, 150, 150);
+border-style:outset;
+border-width:2px;
+
+
+</string>
+    </property>
+    <property name="text">
+     <string>Cadastrar novo usuário preenchendo os campos abaixo:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="line_nome">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>110</y>
+      <width>341</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(184, 184, 184);
+
+border-radius: 12px;
+border-style: outset;
+border-width: 2px;
+border-color: rgb(190, 190, 42);
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="placeholderText">
+     <string>Nome</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="line_login">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>180</y>
+      <width>341</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(184, 184, 184);
+
+border-radius: 12px;
+border-style: outset;
+border-width: 2px;
+border-color: rgb(190, 190, 42);
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="placeholderText">
+     <string>Login</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="line_senha">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>250</y>
+      <width>341</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(184, 184, 184);
+gridline-color: rgb(190, 190, 42);
+border-radius: 12px;
+border-style: outset;
+border-width: 2px;
+border-color: rgb(190, 190, 42);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::PasswordEchoOnEdit</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="placeholderText">
+     <string>Senha</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="line_senha_2">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>320</y>
+      <width>341</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(184, 184, 184);
+gridline-color: rgb(190, 190, 42);
+border-radius: 12px;
+border-style: outset;
+border-width: 2px;
+border-color: rgb(190, 190, 42);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::PasswordEchoOnEdit</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="placeholderText">
+     <string>Confirmar Senha</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_cadastrar">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>480</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 0, 0);
+color: rgb(290, 290, 290);
+color: rgb(255, 255, 255);
+
+border-radius: 12px;
+border-style: outset;
+border-width: 2px;
+border-color: rgb(190, 190, 42);</string>
+    </property>
+    <property name="text">
+     <string>CADASTRAR</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_erro">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>390</y>
+      <width>461</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
