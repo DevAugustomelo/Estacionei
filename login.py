@@ -27,13 +27,13 @@ def cadastrar():
     senha = Cadastro.lienEdit.text()
     repetir_senha = Cadastro.lienEdit.text()
 
-    # Fazer a condicional para cadastrar no banco de dados
+    # condicional para cadastrar no banco de dados
 
     if (senha == repetir_senha):
         try:
             conexao_banco = sqlite3.connect('dados_clientes.db')
             cursor = conexao_banco.cursor()
-            cursor.execute('CREATE TABLE IF NOT EXISTS dados(nome text, login text, senha text')
+            cursor.execute('CREATE TABLE IF NOT EXISTS dados(nome text, login text, senha text)')
             cursor.execute('INSERT INTO dados Values ('"+nome+"', '"+login+"', '"+senha+"')')
 
             conexao_banco.commit()
