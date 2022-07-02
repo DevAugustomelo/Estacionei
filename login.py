@@ -1,6 +1,7 @@
 from PyQt5 import uic, QtWidgets
 import sqlite3
 
+
 def validar():
     Login.lbl_erro.setText("")
     usuario = Login.line_user.text()
@@ -22,29 +23,29 @@ def exibe_cadastro():
 
 
 def cadastrar():
-    nome = Cadastro.lineEdit.text()
-    login = Cadastro.lienEdit.text()
-    senha = Cadastro.lienEdit.text()
-    repetir_senha = Cadastro.lienEdit.text()
+    nome = Cadastro.line_nome.text()
+    login = Cadastro.line_login.text()
+    senha = Cadastro.line_senha.text()
+    repetir_senha = Cadastro.line_senha_2.text()
 
     # condicional para cadastrar no banco de dados
 
-    if (senha == repetir_senha):
+    if senha == repetir_senha:
         try:
             conexao_banco = sqlite3.connect('dados_clientes.db')
             cursor = conexao_banco.cursor()
-            cursor.execute('CREATE TABLE IF NOT EXISTS dados(nome text, login text, senha text)')
-            cursor.execute('INSERT INTO dados Values ('"+nome+"', '"+login+"', '"+senha+"')')
+            cursor.execute("CREATE TABLE IF NOT EXISTS dados(nome text, login text, senha text)")
+            cursor.execute("INSERT INTO dados Values ('"+nome+"', '"+login+"', '"+senha+"')")
 
             conexao_banco.commit()
             conexao_banco.close()
-            Login.lbl_erro.setText("Usuário cadastrado com sucesso!")
+            Cadastro.lbl_erro.setText("Usuário cadastrado com sucesso!")
 
         except sqlite3.Error as erro:
             print('Erro na inserção de dados: ', erro)
 
     else:
-        Login.lbl_erro.setText("As senhas digitadas são distintas!")
+        Cadastro.lbl_erro.setText("As senhas digitadas são distintas!")
 
 
 app = QtWidgets.QApplication([])
@@ -55,7 +56,7 @@ Cadastro = uic.loadUi("Cadastro.ui")
 
 Login.btn_entrar.clicked.connect(validar)
 Login.btn_cadastro.clicked.connect(exibe_cadastro)
-Cadastro.btn_cadastro.clicked.connect(cadastrar)
+Cadastro.btn_cadastrar.clicked.connect(cadastrar)
 Tela03.pushButton_2.clicked.connect(logout)
 Login.line_senha.setEchoMode(QtWidgets.QLineEdit.Password)
 
