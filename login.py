@@ -8,13 +8,19 @@ def validar():
     senha = Login.line_senha.text()
     if usuario == "admin" and senha == "123":
         Login.close()
-        Tela03.show()
+        Gestor.show()
+        # Limpa os campos após inserir os dados
+        Login.line_user.setText("")
+        Login.line_senha.setText("")
+
     else:
         Login.lbl_erro.setText("Dados inválidos!!!!")
 
 
+
+
 def logout():
-    Tela03.close()
+    Gestor.close()
     Login.show()
 
 
@@ -30,7 +36,12 @@ def cadastrar():
 
     # condicional para cadastrar no banco de dados
 
-    if senha == repetir_senha:
+    if nome == "" or login == "" or senha == "" or repetir_senha == "":
+        Cadastro.lbl_erro.setText("* Todos os campos são obrigatórios")
+
+
+    # condicional e criação do banco de dados
+    elif senha == repetir_senha:
         try:
             conexao_banco = sqlite3.connect('dados_clientes.db')
             cursor = conexao_banco.cursor()
@@ -51,14 +62,17 @@ def cadastrar():
 app = QtWidgets.QApplication([])
 
 Login = uic.loadUi("Login.ui")
-Tela03 = uic.loadUi("Tela03.ui")
+Gestor = uic.loadUi("Gestor.ui")
 Cadastro = uic.loadUi("Cadastro.ui")
 
-Login.btn_entrar.clicked.connect(validar)
+
+
+Login.btn_entrar.clicked.connect(validar)                    # Chama a função validar ao Clicar
+Login.line_senha.returnPressed.connect(validar)              # Chama a função validar ao pressionar enter
 Login.btn_cadastro.clicked.connect(exibe_cadastro)
 Cadastro.btn_cadastrar.clicked.connect(cadastrar)
-Tela03.pushButton_2.clicked.connect(logout)
-Login.line_senha.setEchoMode(QtWidgets.QLineEdit.Password)
+Gestor.pushButton_2.clicked.connect(logout)
+Login.line_senha.setEchoMode(QtWidgets.QLineEdit.Password)   # define formato visualização protegida no campo senha
 
 Login.show()
 app.exec()
