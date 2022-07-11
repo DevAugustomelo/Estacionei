@@ -27,18 +27,33 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>290</y>
+      <y>350</y>
       <width>150</width>
       <height>51</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190, 42);
-font: 75 12pt &quot;MS Shell Dlg 2&quot;;
-border-radius:6px;
-border-width:5px;
+     <string notr="true">QPushButton {
+background-color: rgb(190, 190, 42);
+border-color: rgb(0, 85, 255);
 border-style:outset;
-border-color:rgb(0, 85, 255)</string>
+border-radius: 5px;
+border-width: 5px;
+}
+QPushButton:hover {
+background-color: rgb(200, 203, 7);
+border: 5px solid rgb(0, 85, 255);
+}
+QPushButton:pressed {
+background-color: rgb(250, 230, 0);
+border: 5px solid rgb(0, 85, 255);
+}
+</string>
     </property>
     <property name="text">
      <string>ENTRAR</string>
@@ -48,19 +63,30 @@ border-color:rgb(0, 85, 255)</string>
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>120</y>
+      <y>170</y>
       <width>251</width>
       <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(184, 184, 184);
+     <string notr="true">QLineEdit {
+background-color: rgb(184, 184, 184);
 
 border-radius: 12px;
 border-style: outset;
 border-width: 2px;
 border-color: rgb(190, 190, 42);
-</string>
+}
+QLineEdit:hover {
+border: 3px solid rgb(170,0,0);
+}
+
+QLineEdit:focus {
+border: 4px solid rgb(0,85,255);
+}</string>
+    </property>
+    <property name="maxLength">
+     <number>32</number>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -73,18 +99,30 @@ border-color: rgb(190, 190, 42);
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>200</y>
+      <y>230</y>
       <width>251</width>
       <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(184, 184, 184);
+     <string notr="true">QLineEdit {
+background-color: rgb(184, 184, 184);
 gridline-color: rgb(190, 190, 42);
 border-radius: 12px;
 border-style: outset;
 border-width: 2px;
-border-color: rgb(190, 190, 42);</string>
+border-color: rgb(190, 190, 42);
+}
+QLineEdit:hover {
+border: 3px solid rgb(170,0,0);
+}
+
+QLineEdit:focus {
+border: 4px solid rgb(0,85,255);
+}</string>
+    </property>
+    <property name="maxLength">
+     <number>100</number>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Password</enum>
@@ -99,21 +137,32 @@ border-color: rgb(190, 190, 42);</string>
    <widget class="QPushButton" name="btn_cadastro">
     <property name="geometry">
      <rect>
-      <x>175</x>
-      <y>370</y>
+      <x>180</x>
+      <y>430</y>
       <width>101</width>
       <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 0, 0);
-color: rgb(290, 290, 290);
+     <string notr="true">QPushButton {
+background-color: rgb(170, 0, 0);
 color: rgb(255, 255, 255);
-
 border-radius: 12px;
 border-style: outset;
 border-width: 2px;
-border-color: rgb(190, 190, 42);</string>
+border-color: rgb(190, 190, 42);
+}
+
+QPushButton:hover {
+border-style: outset;
+border-width: 2px;
+border-color: rgb(199, 202, 2);
+background-color: rgb(200, 31, 8);
+}
+
+QPushButton:pressed {
+background-color: rgb(255, 62, 24);
+}</string>
     </property>
     <property name="text">
      <string>Cadastrar-se</string>
@@ -123,7 +172,7 @@ border-color: rgb(190, 190, 42);</string>
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>110</y>
+      <y>170</y>
       <width>51</width>
       <height>41</height>
      </rect>
@@ -146,7 +195,7 @@ border-radius:15px;</string>
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>200</y>
+      <y>230</y>
       <width>51</width>
       <height>31</height>
      </rect>
@@ -169,7 +218,7 @@ border-radius:12px;</string>
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>250</y>
+      <y>300</y>
       <width>231</width>
       <height>20</height>
      </rect>
@@ -192,17 +241,16 @@ border-radius:12px;</string>
    <widget class="QLabel" name="icn_logo">
     <property name="geometry">
      <rect>
-      <x>165</x>
-      <y>10</y>
-      <width>101</width>
-      <height>91</height>
+      <x>170</x>
+      <y>40</y>
+      <width>111</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190, 42);
-font: 75 14pt &quot;MS Shell Dlg 2&quot;;
-border-radius:40px;
-border-color:rgb(150, 150, 150);
+     <string notr="true">background-color: rgb(184, 184, 184);
+border-radius:55px;
+border-color:rgb(190,190, 42);
 border-style:outset;
 border-width:5px;
 
@@ -210,7 +258,10 @@ border-width:5px;
 </string>
     </property>
     <property name="text">
-     <string>EstacioneI</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../ESTACIONEI90x90.png</pixmap>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

@@ -1,5 +1,20 @@
 from PyQt5 import uic, QtWidgets
 import sqlite3
+from datetime import datetime
+
+
+
+data_atual = datetime.now()
+
+
+def data():
+    data_formatada = data_atual.strftime('%d/%m/%Y')
+    return data_formatada
+
+
+def hora():
+    hora_formatada = data_atual.strftime('%H:%M:%S')
+    return hora_formatada
 
 
 def validar():
@@ -14,9 +29,7 @@ def validar():
         Login.line_senha.setText("")
 
     else:
-        Login.lbl_erro.setText("Dados inválidos!!!!")
-
-
+        Login.lbl_erro.setText("<< Dados inválidos >>")
 
 
 def logout():
@@ -73,6 +86,9 @@ Login.btn_cadastro.clicked.connect(exibe_cadastro)
 Cadastro.btn_cadastrar.clicked.connect(cadastrar)
 Gestor.pushButton_2.clicked.connect(logout)
 Login.line_senha.setEchoMode(QtWidgets.QLineEdit.Password)   # define formato visualização protegida no campo senha
+
+Gestor.lbl_data.setText(data())
+Gestor.lbl_hora.setText(hora())
 
 Login.show()
 app.exec()

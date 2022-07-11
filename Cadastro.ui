@@ -66,13 +66,21 @@ border-width:2px;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(184, 184, 184);
+     <string notr="true">QLineEdit {
+background-color: rgb(184, 184, 184);
 
 border-radius: 12px;
 border-style: outset;
 border-width: 2px;
 border-color: rgb(190, 190, 42);
-</string>
+}
+QLineEdit:hover {
+border: 3px solid rgb(170,0,0);
+}
+
+QLineEdit:focus {
+border: 4px solid rgb(0,85,255);
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -94,13 +102,21 @@ border-color: rgb(190, 190, 42);
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(184, 184, 184);
-
+     <string notr="true">QLineEdit {
+background-color: rgb(184, 184, 184);
+gridline-color: rgb(190, 190, 42);
 border-radius: 12px;
 border-style: outset;
 border-width: 2px;
 border-color: rgb(190, 190, 42);
-</string>
+}
+QLineEdit:hover {
+border: 3px solid rgb(170,0,0);
+}
+
+QLineEdit:focus {
+border: 4px solid rgb(0,85,255);
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -122,12 +138,21 @@ border-color: rgb(190, 190, 42);
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(184, 184, 184);
+     <string notr="true">QLineEdit {
+background-color: rgb(184, 184, 184);
 gridline-color: rgb(190, 190, 42);
 border-radius: 12px;
 border-style: outset;
 border-width: 2px;
-border-color: rgb(190, 190, 42);</string>
+border-color: rgb(190, 190, 42);
+}
+QLineEdit:hover {
+border: 3px solid rgb(170,0,0);
+}
+
+QLineEdit:focus {
+border: 4px solid rgb(0,85,255);
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -152,12 +177,21 @@ border-color: rgb(190, 190, 42);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(184, 184, 184);
+     <string notr="true">QLineEdit {
+background-color: rgb(184, 184, 184);
 gridline-color: rgb(190, 190, 42);
 border-radius: 12px;
 border-style: outset;
 border-width: 2px;
-border-color: rgb(190, 190, 42);</string>
+border-color: rgb(190, 190, 42);
+}
+QLineEdit:hover {
+border: 3px solid rgb(170,0,0);
+}
+
+QLineEdit:focus {
+border: 4px solid rgb(0,85,255);
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -187,14 +221,26 @@ border-color: rgb(190, 190, 42);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 0, 0);
-color: rgb(290, 290, 290);
+     <string notr="true">QPushButton {
+background-color: rgb(170, 0, 0);
 color: rgb(255, 255, 255);
-
 border-radius: 12px;
 border-style: outset;
 border-width: 2px;
-border-color: rgb(190, 190, 42);</string>
+border-color: rgb(190, 190, 42);
+}
+
+QPushButton:hover {
+border-style: outset;
+border-width: 2px;
+border-color: rgb(199, 202, 2);
+background-color: rgb(200, 31, 8);
+}
+
+QPushButton:pressed {
+background-color: rgb(255, 62, 24);
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+}</string>
     </property>
     <property name="text">
      <string>CADASTRAR</string>

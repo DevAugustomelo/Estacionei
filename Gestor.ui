@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>655</width>
+    <width>698</width>
     <height>610</height>
    </rect>
   </property>
@@ -34,8 +34,8 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>490</y>
+      <x>290</x>
+      <y>520</y>
       <width>151</width>
       <height>51</height>
      </rect>
@@ -48,14 +48,26 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 0, 0);
-color: rgb(255, 228, 19);
-
-
+     <string notr="true">QPushButton {
+background-color: rgb(170, 0, 0);
+color: rgb(255, 255, 255);
 border-radius: 12px;
 border-style: outset;
 border-width: 2px;
-border-color: rgb(190, 190, 42);</string>
+border-color: rgb(190, 190, 42);
+}
+
+QPushButton:hover {
+border-style: outset;
+border-width: 2px;
+border-color: rgb(199, 202, 2);
+background-color: rgb(200, 31, 8);
+}
+
+QPushButton:pressed {
+background-color: rgb(255, 62, 24);
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+}</string>
     </property>
     <property name="text">
      <string>SAIR</string>
@@ -64,15 +76,18 @@ border-color: rgb(190, 190, 42);</string>
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>80</y>
-      <width>621</width>
-      <height>331</height>
+      <x>10</x>
+      <y>20</y>
+      <width>701</width>
+      <height>501</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(86, 86, 86);
 </string>
+    </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::North</enum>
     </property>
     <property name="currentIndex">
      <number>0</number>
@@ -83,6 +98,9 @@ border-color: rgb(190, 190, 42);</string>
       <height>18</height>
      </size>
     </property>
+    <property name="documentMode">
+     <bool>true</bool>
+    </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Entrada</string>
@@ -91,8 +109,8 @@ border-color: rgb(190, 190, 42);</string>
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>70</y>
-        <width>150</width>
+        <y>110</y>
+        <width>181</width>
         <height>50</height>
        </rect>
       </property>
@@ -114,23 +132,23 @@ border-color: rgb(190, 190, 42);</string>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(190, 190, 42);
 font: 75 12pt &quot;MS Shell Dlg 2&quot;;
-border-radius:6px;
-border-width:5px;
-border-style:outset;
-border-color:rgb(0, 85, 255)</string>
+border-radius: 12px;
+border-style: outset;
+border-width: 2px;
+border-color: rgb(0, 85, 255);</string>
       </property>
       <property name="text">
-       <string>PLACA</string>
+       <string>ENTRADA DE PLACA</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="line_placa">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>70</y>
+        <x>240</x>
+        <y>110</y>
         <width>181</width>
         <height>51</height>
        </rect>
@@ -143,15 +161,27 @@ border-color:rgb(0, 85, 255)</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(184, 184, 184);
-gridline-color: rgb(190, 190, 42);
+       <string notr="true">QLineEdit {
+background-color: rgb(184, 184, 184);
+
 border-radius: 12px;
 border-style: outset;
 border-width: 2px;
-border-color: rgb(190, 190, 42);</string>
+border-color: rgb(190, 190, 42);
+}
+QLineEdit:hover {
+border: 3px solid rgb(170,0,0);
+}
+
+QLineEdit:focus {
+border: 4px solid rgb(0,85,255);
+}</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="maxLength">
+       <number>7</number>
       </property>
       <property name="frame">
        <bool>false</bool>
@@ -159,8 +189,11 @@ border-color: rgb(190, 190, 42);</string>
       <property name="cursorPosition">
        <number>0</number>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
       <property name="placeholderText">
-       <string/>
+       <string>digite aqui</string>
       </property>
       <property name="clearButtonEnabled">
        <bool>false</bool>
@@ -169,8 +202,8 @@ border-color: rgb(190, 190, 42);</string>
      <widget class="QFrame" name="frame">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>139</y>
+        <x>40</x>
+        <y>260</y>
         <width>481</width>
         <height>141</height>
        </rect>
@@ -189,8 +222,8 @@ border-color: rgb(190, 190, 42);</string>
         <rect>
          <x>30</x>
          <y>20</y>
-         <width>47</width>
-         <height>13</height>
+         <width>50</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
@@ -206,9 +239,9 @@ border-color: rgb(190, 190, 42);</string>
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>60</y>
-         <width>47</width>
-         <height>13</height>
+         <y>80</y>
+         <width>50</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
@@ -220,29 +253,475 @@ border-color: rgb(190, 190, 42);</string>
         <string>HORA:</string>
        </property>
       </widget>
+      <widget class="QLabel" name="lbl_hora">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>80</y>
+         <width>92</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 127);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lbl_data">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>20</y>
+         <width>92</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 127);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="lbl_text">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>60</y>
+        <width>251</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>7</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(190, 190, 42);
+
+
+border-color:rgb(150, 150, 150);
+border-style:outset;
+border-width:2px;
+
+
+</string>
+      </property>
+      <property name="text">
+       <string>* Forma Clássica ex: ABC1234 e Mercosul ex: EFG5H67</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lbl_erro">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>200</y>
+        <width>231</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
       <string>Saída</string>
      </attribute>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>40</y>
+        <width>181</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>150</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>12</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(190, 190, 42);
+font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+border-radius: 12px;
+border-style: outset;
+border-width: 2px;
+border-color: rgb(0, 85, 255);</string>
+      </property>
+      <property name="text">
+       <string>SAÍDA DE PLACA</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_placa_2">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>120</y>
+        <width>181</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+background-color: rgb(184, 184, 184);
+
+border-radius: 12px;
+border-style: outset;
+border-width: 2px;
+border-color: rgb(190, 190, 42);
+}
+QLineEdit:hover {
+border: 3px solid rgb(170,0,0);
+}
+
+QLineEdit:focus {
+border: 4px solid rgb(0,85,255);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>7</number>
+      </property>
+      <property name="frame">
+       <bool>false</bool>
+      </property>
+      <property name="cursorPosition">
+       <number>0</number>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>digite aqui</string>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lbl_erro_2">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>220</y>
+        <width>231</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QFrame" name="frame_2">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>260</y>
+        <width>611</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(184, 184, 184);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>DATA DA ENTRADA:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>100</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>HORA DA ENTRADA:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>330</x>
+         <y>20</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>DATA DA SAÍDA:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_8">
+       <property name="geometry">
+        <rect>
+         <x>330</x>
+         <y>100</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>HORA DA SAÍDA:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lbl_data_entrada">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>50</y>
+         <width>92</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 127);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lbl_data_saida">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>50</y>
+         <width>92</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 127);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lbl_hora_entrada">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>130</y>
+         <width>92</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 127);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lbl_data_2">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>130</y>
+         <width>92</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 127);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
       <string>Consulta</string>
      </attribute>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>40</y>
+        <width>691</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 170, 127);</string>
+      </property>
+      <column>
+       <property name="text">
+        <string>Placa</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Data de Entrada</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Hora de Entrada</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Data de Saída</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Hora de Saída</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>Histórico</string>
+     </attribute>
     </widget>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>655</width>
-     <height>21</height>
-    </rect>
-   </property>
   </widget>
  </widget>
  <resources/>
