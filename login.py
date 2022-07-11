@@ -21,15 +21,30 @@ def validar():
     Login.lbl_erro.setText("")
     usuario = Login.line_user.text()
     senha = Login.line_senha.text()
-    if usuario == "admin" and senha == "123":
-        Login.close()
-        Gestor.show()
-        # Limpa os campos após inserir os dados
-        Login.line_user.setText("")
-        Login.line_senha.setText("")
+    conexao_banco = sqlite3.connect('dados_clientes.db')
+    cursor = conexao_banco.cursor()
 
+    cursor.execute("SELECT login FROM dados WHERE senha = '{}'".format(senha))
+    login_bd = cursor.fetchall()
+    conexao_banco.close()
+
+    if usuario != login_bd[0][0]:
+        Login.lbl_erro.setText("Login não cadastrado!")
     else:
-        Login.lbl_erro.setText("<< Dados inválidos >>")
+        cursor.execute("SELECT senha FROM dados WHERE login = '{}'".format(usuario))
+        senha_bd = cursor.fetchall()
+        conexao_banco.close()
+
+        if senha == senha_bd[0][0]:
+            Login.close()
+            Gestor.show()
+            # Limpa os campos após inserir os dados
+            Login.line_user.setText("")
+            Login.line_senha.setText("")
+        else:
+            Login.lbl_erro.setText("Dados inválidos!!!!")
+
+
 
 
 def logout():
