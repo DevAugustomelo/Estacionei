@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Estacionei</string>
+   <string>Estacionei - Cadastro</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(86, 86, 86);</string>
