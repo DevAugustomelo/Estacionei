@@ -23,15 +23,15 @@ def validar():
     Login.lbl_erro.setText("")
     usuario = Login.line_user.text()
     senha = Login.line_senha.text()
-    # conexao_banco = sqlite3.connect('dados_estacionei.db')
-    # cursor = conexao_banco.cursor()
-    #
-    # cursor.execute("SELECT login FROM dados WHERE login = '{}'".format(usuario))
-    # login_bd = cursor.fetchall()
-    # usuario_bd = str(login_bd[0][0])
-    #
-    # if usuario != usuario_bd:
-    #     Login.lbl_erro.setText("!Login não cadastrado!")
+    conexao_banco = sqlite3.connect('dados_estacionei.db')
+    cursor = conexao_banco.cursor()
+
+    cursor.execute("SELECT login FROM dados WHERE login = '{}'".format(usuario))
+    login_bd = cursor.fetchall()
+    usuario_bd = str(login_bd[0][0])
+
+    if usuario != usuario_bd:
+        Login.lbl_erro.setText("!Login não cadastrado!")
     # else:
     #     cursor.execute("SELECT senha FROM dados WHERE login = '{}'".format(usuario))
     #     senha_bd = cursor.fetchall()
@@ -59,6 +59,7 @@ def exibe_cadastro():
 
 
 def cadastrar():
+    Cadastro.lbl_erro.setText("")
     nome = Cadastro.line_nome.text()
     login = Cadastro.line_login.text()
     senha = Cadastro.line_senha.text()
@@ -80,6 +81,10 @@ def cadastrar():
 
             conexao_banco.commit()
             conexao_banco.close()
+            Cadastro.line_nome.setText("")
+            Cadastro.line_login.setText("")
+            Cadastro.line_senha.setText("")
+            Cadastro.line_senha_2.setText("")
             Cadastro.lbl_erro.setText("<< Usuário cadastrado com sucesso >>")
 
         except sqlite3.Error as erro:

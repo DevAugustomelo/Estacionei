@@ -263,7 +263,7 @@ border-width:5px;
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../ESTACIONEI90x90.png</pixmap>
+     <pixmap>ESTACIONEI90x90.png</pixmap>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
