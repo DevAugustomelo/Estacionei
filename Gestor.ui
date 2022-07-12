@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>698</width>
+    <width>723</width>
     <height>610</height>
    </rect>
   </property>
@@ -35,7 +35,7 @@
     <property name="geometry">
      <rect>
       <x>290</x>
-      <y>520</y>
+      <y>540</y>
       <width>151</width>
       <height>51</height>
      </rect>
@@ -77,7 +77,7 @@ background-color: rgb(255, 62, 24);
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>20</y>
+      <y>30</y>
       <width>701</width>
       <height>501</height>
      </rect>
@@ -90,7 +90,7 @@ background-color: rgb(255, 62, 24);
      <enum>QTabWidget::North</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <property name="iconSize">
      <size>
@@ -130,7 +130,9 @@ background-color: rgb(255, 62, 24);
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(190, 190, 42);
+       <string notr="true">
+background-color: qlineargradient(spread:pad, x1:0.574, y1:0.561636, x2:0, y2:0, stop:0.112994 rgba(190, 190, 42, 255), stop:1 rgba(255, 255, 255, 255));
+
 font: 75 12pt &quot;MS Shell Dlg 2&quot;;
 border-radius: 12px;
 border-style: outset;
@@ -138,13 +140,13 @@ border-width: 2px;
 border-color: rgb(0, 85, 255);</string>
       </property>
       <property name="text">
-       <string>ENTRADA DE PLACA</string>
+       <string>ENTRAR PLACA</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="line_placa">
+     <widget class="QLineEdit" name="line_placa_entrada">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -315,7 +317,7 @@ border: 4px solid rgb(0,85,255);
        <font>
         <family>MS Shell Dlg 2</family>
         <pointsize>7</pointsize>
-        <weight>9</weight>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -341,16 +343,19 @@ border-width:2px;
      <widget class="QLabel" name="lbl_erro">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>210</x>
         <y>200</y>
-        <width>231</width>
+        <width>281</width>
         <height>20</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>13</pointsize>
+        <pointsize>10</pointsize>
        </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgb(255, 255, 0);</string>
@@ -360,6 +365,48 @@ border-width:2px;
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_ok_entrada">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>110</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+background-color: qlineargradient(spread:pad, x1:0.574, y1:0.561636, x2:0, y2:0, stop:0.112994 rgba(170, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+color: rgb(255, 255, 255);
+border-radius: 12px;
+border-style: outset;
+border-width: 2px;
+border-color: rgb(190, 190, 42);
+}
+
+QPushButton:hover {
+border-style: outset;
+border-width: 2px;
+border-color: rgb(199, 202, 2);
+background-color: rgb(200, 31, 8);
+}
+
+QPushButton:pressed {
+background-color: rgb(255, 62, 24);
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+      </property>
+      <property name="text">
+       <string>OK</string>
       </property>
      </widget>
     </widget>
@@ -392,7 +439,7 @@ border-width:2px;
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(190, 190, 42);
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0.574, y1:0.561636, x2:0, y2:0, stop:0.112994 rgba(190, 190, 42, 255), stop:1 rgba(255, 255, 255, 255));
 font: 75 12pt &quot;MS Shell Dlg 2&quot;;
 border-radius: 12px;
 border-style: outset;
@@ -406,7 +453,7 @@ border-color: rgb(0, 85, 255);</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="line_placa_2">
+     <widget class="QLineEdit" name="line_placa_saida">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -672,12 +719,142 @@ border: 4px solid rgb(0,85,255);
        </property>
       </widget>
      </widget>
+     <widget class="QPushButton" name="btn_ok_saida">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>120</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+background-color: qlineargradient(spread:pad, x1:0.574, y1:0.561636, x2:0, y2:0, stop:0.112994 rgba(170, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+color: rgb(255, 255, 255);
+border-radius: 12px;
+border-style: outset;
+border-width: 2px;
+border-color: rgb(190, 190, 42);
+}
+
+QPushButton:hover {
+border-style: outset;
+border-width: 2px;
+border-color: rgb(199, 202, 2);
+background-color: rgb(200, 31, 8);
+}
+
+QPushButton:pressed {
+background-color: rgb(255, 62, 24);
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+      </property>
+      <property name="text">
+       <string>OK</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
       <string>Consulta</string>
      </attribute>
-     <widget class="QTableWidget" name="tableWidget">
+     <widget class="QTableWidget" name="tabela_consulta">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>40</y>
+        <width>691</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::TabFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 170, 127);</string>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>120</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>Placa</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Data de Entrada</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Hora de Entrada</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QPushButton" name="btn_atualizar">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>390</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+background-color: qlineargradient(spread:reflect, x1:0.394, y1:0.528, x2:0.113, y2:0.00609091, stop:0.410112 rgba(0, 85, 255, 255), stop:1 rgba(230, 230, 230, 255));
+color: rgb(255, 255, 255);
+border-radius: 12px;
+border-style: outset;
+border-width: 2px;
+border-color: rgb(190, 190, 42);
+}
+
+QPushButton:hover {
+border-style: outset;
+border-width: 2px;
+border-color: rgb(199, 202, 2);
+background-color: rgb(200, 31, 8);
+}
+
+QPushButton:pressed {
+background-color: rgb(255, 62, 24);
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+      </property>
+      <property name="text">
+       <string>ATUALIZAR</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>Histórico</string>
+     </attribute>
+     <widget class="QTableWidget" name="tableWidget_2">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -715,11 +892,48 @@ border: 4px solid rgb(0,85,255);
        </property>
       </column>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_4">
-     <attribute name="title">
-      <string>Histórico</string>
-     </attribute>
+     <widget class="QPushButton" name="btn_atualizar2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>390</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+background-color: qlineargradient(spread:reflect, x1:0.394, y1:0.528, x2:0.113, y2:0.00609091, stop:0.410112 rgba(0, 85, 255, 255), stop:1 rgba(230, 230, 230, 255));
+color: rgb(255, 255, 255);
+border-radius: 12px;
+border-style: outset;
+border-width: 2px;
+border-color: rgb(190, 190, 42);
+}
+
+QPushButton:hover {
+border-style: outset;
+border-width: 2px;
+border-color: rgb(199, 202, 2);
+background-color: rgb(200, 31, 8);
+}
+
+QPushButton:pressed {
+background-color: rgb(255, 62, 24);
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+      </property>
+      <property name="text">
+       <string>ATUALIZAR</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

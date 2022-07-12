@@ -52,6 +52,7 @@ border: 5px solid rgb(0, 85, 255);
 QPushButton:pressed {
 background-color: rgb(250, 230, 0);
 border: 5px solid rgb(0, 85, 255);
+	font: 13pt &quot;MS Shell Dlg 2&quot;;
 }
 </string>
     </property>
@@ -162,6 +163,7 @@ background-color: rgb(200, 31, 8);
 
 QPushButton:pressed {
 background-color: rgb(255, 62, 24);
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
 }</string>
     </property>
     <property name="text">
@@ -250,7 +252,7 @@ border-radius:12px;</string>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(184, 184, 184);
 border-radius:55px;
-border-color:rgb(190,190, 42);
+border-color: rgb(190, 190, 42);
 border-style:outset;
 border-width:5px;
 
