@@ -3,7 +3,11 @@ import sqlite3
 from datetime import datetime
 
 
-
+def data_str(x, y):
+    une_str = x + ' ' + y
+    data_atual = datetime.now()
+    entrada = data_atual.strptime(une_str, "%d/%m/%Y %H:%M:%S")
+    return entrada
 
 
 
@@ -140,8 +144,23 @@ def banco_saida():
     data_saida = data()
     hora_saida = hora()
 
+    banco = sqlite3.connect('dados_estacionei.db')
+    cursor = banco.cursor()
+
+    cursor.execute("SELECT Placa FROM entrada WHERE Placa = '{}'".format(placa))
+    placa_bd = cursor.fetchall()
+    banco.close()
+    # print(placa)
+    # print(placa_bd)
+    # print(formatar(placa))
+
+
     if placa == "":
         Gestor.lbl_erro_2.setText("* Digite a Placa antes de confirmar")
+
+    elif formatar(placa)[0] not in placa_bd:
+        Login.lbl_erro_2.setText("!Placa não cadastrada!")
+
 
     else:
         try:
@@ -150,19 +169,24 @@ def banco_saida():
 
             cursor.execute("SELECT DataEntrada FROM entrada WHERE Placa = '{}'".format(placa))
             data_entrada_bd = cursor.fetchall()
+            data_str_bd = data_entrada_bd[0][0]
 
             cursor.execute("SELECT HoraEntrada FROM entrada WHERE Placa = '{}'".format(placa))
             hora_entrada_bd = cursor.fetchall()
-            hora_str = hora_entrada_bd[0][0]
+            hora_str_bd = hora_entrada_bd[0][0]
+
+            d_entrada = data_str(data_str_bd, hora_str_bd)
+            d_saida = data_str(data_saida, hora_saida)
+            permanencia = d_saida - d_entrada
 
 
             cursor.execute("CREATE TABLE IF NOT EXISTS saida (Placa text, DataEntrada text, HoraEntrada text, DataSaida text, HoraSaida text, Permanencia text)")
-            cursor.execute(f"INSERT INTO saida Values('{placa}', '{data_entrada_bd[0][0]}', '{hora_entrada_bd[0][0]}', '{data_saida}', '{hora_saida}')")
+            cursor.execute(f"INSERT INTO saida Values('{placa}', '{data_str_bd}', '{hora_str_bd}', '{data_saida}', '{hora_saida}', '{permanencia}')")
 
             banco.commit()
             banco.close()
-            Gestor.lbl_data_entrada.setText(data_entrada_bd[0][0])
-            Gestor.lbl_hora_entrada.setText(hora_entrada_bd[0][0])
+            Gestor.lbl_data_entrada.setText(data_str_bd)
+            Gestor.lbl_hora_entrada.setText(hora_str_bd)
             Gestor.line_placa_saida.setText("")
             Gestor.lbl_data_saida.setText(data())
             Gestor.lbl_hora_saida.setText(hora())
@@ -171,6 +195,7 @@ def banco_saida():
 
         except sqlite3.Error as erro:
             Gestor.lbl_erro_2.setText("!Ocorreu um erro inesperado!", erro)
+
 
 
 def consulta():
@@ -201,11 +226,14 @@ def historico():
     # Percorre a matriz da busca e organiza a forma que o resultado é exibido
 
     for x in range(0, len(busca)):
-        for k in range(0, 5):  # 6 sendo a quantidade de colunas
+        for k in range(0, 6):  # 6 sendo a quantidade de colunas
             Gestor.tabela_historico.setItem(x, k, QtWidgets.QTableWidgetItem(str(busca[x][k])))
 
     banco.close()
 
+
+def deletar():
+    pass
 
 
 app = QtWidgets.QApplication([])
@@ -225,6 +253,7 @@ Cadastro.btn_cadastrar.clicked.connect(cadastrar)
 Gestor.pushButton_2.clicked.connect(logout)
 Gestor.btn_ok_entrada.clicked.connect(banco_entrada)
 Gestor.btn_ok_saida.clicked.connect(banco_saida)
+Gestor.btn_ok_saida.clicked.connect(deletar)
 Gestor.btn_atualizar.clicked.connect(consulta)
 Gestor.btn_atualizar2.clicked.connect(historico)
 

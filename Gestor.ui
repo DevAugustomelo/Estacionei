@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>723</width>
+    <width>856</width>
     <height>610</height>
    </rect>
   </property>
@@ -78,8 +78,8 @@ background-color: rgb(255, 62, 24);
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>701</width>
-      <height>501</height>
+      <width>900</width>
+      <height>491</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -343,9 +343,9 @@ border-width:2px;
      <widget class="QLabel" name="lbl_erro">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>200</x>
         <y>200</y>
-        <width>281</width>
+        <width>311</width>
         <height>20</height>
        </rect>
       </property>
@@ -511,9 +511,9 @@ border: 4px solid rgb(0,85,255);
      <widget class="QLabel" name="lbl_erro_2">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>170</x>
         <y>220</y>
-        <width>231</width>
+        <width>311</width>
         <height>20</height>
        </rect>
       </property>
@@ -858,14 +858,17 @@ background-color: rgb(255, 62, 24);
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>40</y>
-        <width>691</width>
-        <height>331</height>
+        <y>30</y>
+        <width>901</width>
+        <height>341</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(170, 170, 127);</string>
       </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>150</number>
+      </attribute>
       <column>
        <property name="text">
         <string>Placa</string>
@@ -889,6 +892,11 @@ background-color: rgb(255, 62, 24);
       <column>
        <property name="text">
         <string>Hora de Saída</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Permanência dias/horas</string>
        </property>
       </column>
      </widget>
