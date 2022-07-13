@@ -25,7 +25,9 @@ def formatar(x):
     tupla = tuple(lista)
     lista2 = []
     lista2.append(tupla)
-    return lista2
+    resultado = lista2[0:1]
+    return resultado
+
 
 
 def validar():
@@ -36,13 +38,14 @@ def validar():
     cursor = conexao_banco.cursor()
 
     cursor.execute("SELECT login FROM dados WHERE login = '{}'".format(usuario))
-    login = cursor.fetchall()
+    login_bd = cursor.fetchall()
+    conexao_banco.close()
 
-
-    if formatar(usuario) != login:
-
+    if formatar(usuario) != login_bd:
         Login.lbl_erro.setText("!Login não cadastrado!")
     else:
+        conexao_banco = sqlite3.connect('dados_estacionei.db')
+        cursor = conexao_banco.cursor()
         cursor.execute("SELECT senha FROM dados WHERE login = '{}'".format(usuario))
         senha_bd = cursor.fetchall()
         conexao_banco.close()
@@ -55,6 +58,7 @@ def validar():
             Login.line_senha.setText("")
         else:
             Login.lbl_erro.setText("!Senha incorreta!")
+
 
 
 
@@ -143,19 +147,23 @@ def banco_saida():
         try:
             banco = sqlite3.connect('dados_estacionei.db')
             cursor = banco.cursor()
-            cursor.execute("CREATE TABLE IF NOT EXISTS saida (Placa text, DataSaida text, HoraSaida text)")
-            cursor.execute(f"INSERT INTO saida Values('{placa}','{data_saida}', '{hora_saida}')")
 
             cursor.execute("SELECT DataEntrada FROM entrada WHERE Placa = '{}'".format(placa))
             data_entrada_bd = cursor.fetchall()
+            print(data_entrada_bd)
 
-            '''cursor.execute("SELECT HoraEntrada FROM entrada WHERE Placa = '{}'".format(placa))
-            hora_entrada_bd = cursor.fetchall()'''
+            cursor.execute("SELECT HoraEntrada FROM entrada WHERE Placa = '{}'".format(placa))
+            hora_entrada_bd = cursor.fetchall()
+            hora_str = hora_entrada_bd[0][0]
+
+
+            cursor.execute("CREATE TABLE IF NOT EXISTS saida (Placa text, DataEntrada text, HoraEntrada text, DataSaida text, HoraSaida text, Permanencia text)")
+            cursor.execute(f"INSERT INTO saida Values('{placa}', '{data_entrada_bd[0][0]}', '{hora_entrada_bd[0][0]}', '{data_saida}', '{hora_saida}')")
 
             banco.commit()
             banco.close()
             Gestor.lbl_data_entrada.setText(data_entrada_bd[0][0])
-            '''Gestor.lbl_hora_entrada.setText(hora_entrada_bd[0][0])'''
+            Gestor.lbl_hora_entrada.setText(hora_entrada_bd[0][0])
             Gestor.line_placa_saida.setText("")
             Gestor.lbl_data_saida.setText(data())
             Gestor.lbl_hora_saida.setText(hora())
@@ -194,7 +202,7 @@ def historico():
     # Percorre a matriz da busca e organiza a forma que o resultado é exibido
 
     for x in range(0, len(busca)):
-        for k in range(0, 6):  # 6 sendo a quantidade de colunas
+        for k in range(0, 5):  # 6 sendo a quantidade de colunas
             Gestor.tabela_historico.setItem(x, k, QtWidgets.QTableWidgetItem(str(busca[x][k])))
 
     banco.close()
