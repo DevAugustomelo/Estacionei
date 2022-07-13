@@ -150,7 +150,6 @@ def banco_saida():
 
             cursor.execute("SELECT DataEntrada FROM entrada WHERE Placa = '{}'".format(placa))
             data_entrada_bd = cursor.fetchall()
-            print(data_entrada_bd)
 
             cursor.execute("SELECT HoraEntrada FROM entrada WHERE Placa = '{}'".format(placa))
             hora_entrada_bd = cursor.fetchall()
