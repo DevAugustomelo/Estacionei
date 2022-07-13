@@ -19,6 +19,15 @@ def hora():
     return hora_formatada
 
 
+def formatar(x):
+    lista = []
+    lista.append(x)
+    tupla = tuple(lista)
+    lista2 = []
+    lista2.append(tupla)
+    return lista2
+
+
 def validar():
     Login.lbl_erro.setText("")
     usuario = Login.line_user.text()
@@ -27,24 +36,25 @@ def validar():
     cursor = conexao_banco.cursor()
 
     cursor.execute("SELECT login FROM dados WHERE login = '{}'".format(usuario))
-    login_bd = cursor.fetchall()
-    usuario_bd = str(login_bd[0][0])
+    login = cursor.fetchall()
+    formatar(usuario)
 
-    if usuario != usuario_bd:
+    if  formatar(usuario) != login:
+
         Login.lbl_erro.setText("!Login não cadastrado!")
-    # else:
-    #     cursor.execute("SELECT senha FROM dados WHERE login = '{}'".format(usuario))
-    #     senha_bd = cursor.fetchall()
-    #     conexao_banco.close()
-    #
-    #     if senha == senha_bd[0][0]:
-    Login.close()
-    Gestor.show()
-        #     # Limpa os campos após inserir os dados
-        #     Login.line_user.setText("")
-        #     Login.line_senha.setText("")
-        # else:
-        #     Login.lbl_erro.setText("!Senha incorreta!")
+    else:
+        cursor.execute("SELECT senha FROM dados WHERE login = '{}'".format(usuario))
+        senha_bd = cursor.fetchall()
+        conexao_banco.close()
+
+        if senha == senha_bd[0][0]:
+            Login.close()
+            Gestor.show()
+            # Limpa os campos após inserir os dados
+            Login.line_user.setText("")
+            Login.line_senha.setText("")
+        else:
+            Login.lbl_erro.setText("!Senha incorreta!")
 
 
 
