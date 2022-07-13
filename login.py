@@ -37,9 +37,9 @@ def validar():
 
     cursor.execute("SELECT login FROM dados WHERE login = '{}'".format(usuario))
     login = cursor.fetchall()
-    formatar(usuario)
 
-    if  formatar(usuario) != login:
+
+    if formatar(usuario) != login:
 
         Login.lbl_erro.setText("!Login não cadastrado!")
     else:
@@ -131,6 +131,41 @@ def banco_entrada():
             Gestor.lbl_erro.setText("!Ocorreu um erro inesperado!", erro)
 
 
+def banco_saida():
+    placa = Gestor.line_placa_saida.text()
+    data_saida = data()
+    hora_saida = hora()
+
+    if placa == "":
+        Gestor.lbl_erro_2.setText("* Digite a Placa antes de confirmar")
+
+    else:
+        try:
+            banco = sqlite3.connect('dados_estacionei.db')
+            cursor = banco.cursor()
+            cursor.execute("CREATE TABLE IF NOT EXISTS saida (Placa text, DataSaida text, HoraSaida text)")
+            cursor.execute(f"INSERT INTO saida Values('{placa}','{data_saida}', '{hora_saida}')")
+
+            cursor.execute("SELECT DataEntrada FROM entrada WHERE Placa = '{}'".format(placa))
+            data_entrada_bd = cursor.fetchall()
+
+            '''cursor.execute("SELECT HoraEntrada FROM entrada WHERE Placa = '{}'".format(placa))
+            hora_entrada_bd = cursor.fetchall()'''
+
+            banco.commit()
+            banco.close()
+            Gestor.lbl_data_entrada.setText(data_entrada_bd[0][0])
+            '''Gestor.lbl_hora_entrada.setText(hora_entrada_bd[0][0])'''
+            Gestor.line_placa_saida.setText("")
+            Gestor.lbl_data_saida.setText(data())
+            Gestor.lbl_hora_saida.setText(hora())
+
+            Gestor.lbl_erro_2.setText("<< Dados inseridos com sucesso >>")
+
+        except sqlite3.Error as erro:
+            Gestor.lbl_erro_2.setText("!Ocorreu um erro inesperado!", erro)
+
+
 def consulta():
     banco = sqlite3.connect('dados_estacionei.db')
     cursor = banco.cursor()
@@ -149,7 +184,20 @@ def consulta():
 
 
 def historico():
-    pass
+    banco = sqlite3.connect('dados_estacionei.db')
+    cursor = banco.cursor()
+    cursor.execute("SELECT * FROM saida")
+    busca = cursor.fetchall()  # Retorna os dados em formato de matriz
+    Gestor.tabela_historico.setRowCount(len(busca))  # Cria linhas de acordo com a quantidade de registros no banco
+    Gestor.tabela_historico.setColumnCount(6)  # Cria a quantidade de colunas que será exibida
+
+    # Percorre a matriz da busca e organiza a forma que o resultado é exibido
+
+    for x in range(0, len(busca)):
+        for k in range(0, 6):  # 6 sendo a quantidade de colunas
+            Gestor.tabela_historico.setItem(x, k, QtWidgets.QTableWidgetItem(str(busca[x][k])))
+
+    banco.close()
 
 
 
@@ -169,6 +217,7 @@ Cadastro.btn_cadastrar.clicked.connect(cadastrar)
 
 Gestor.pushButton_2.clicked.connect(logout)
 Gestor.btn_ok_entrada.clicked.connect(banco_entrada)
+Gestor.btn_ok_saida.clicked.connect(banco_saida)
 Gestor.btn_atualizar.clicked.connect(consulta)
 Gestor.btn_atualizar2.clicked.connect(historico)
 
