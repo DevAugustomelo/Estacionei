@@ -79,10 +79,17 @@ def cadastrar():
     repetir_senha = Cadastro.line_senha_2.text()
 
     # condicional para cadastrar no banco de dados
+    banco = sqlite3.connect('dados_estacionei.db')
+    cursor = banco.cursor()
+    cursor.execute("SELECT nome FROM dados WHERE nome = '{}'".format(nome))
+    nome_bd = cursor.fetchall()
+    banco.close()
 
     if nome == "" or login == "" or senha == "" or repetir_senha == "":
         Cadastro.lbl_erro.setText("* Todos os campos são obrigatórios")
 
+    elif nome == nome_bd[0][0]:
+        Cadastro.lbl_erro.setText("* Usuário já está cadastrado.")
 
     # condicional e criação do banco de dados
     elif senha == repetir_senha:

@@ -90,7 +90,7 @@ background-color: rgb(255, 62, 24);
      <enum>QTabWidget::North</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <property name="iconSize">
      <size>
@@ -343,9 +343,9 @@ border-width:2px;
      <widget class="QLabel" name="lbl_erro">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>200</y>
-        <width>311</width>
+        <x>160</x>
+        <y>190</y>
+        <width>321</width>
         <height>20</height>
        </rect>
       </property>
@@ -513,13 +513,13 @@ border: 4px solid rgb(0,85,255);
        <rect>
         <x>170</x>
         <y>220</y>
-        <width>311</width>
+        <width>351</width>
         <height>20</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>13</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="styleSheet">
