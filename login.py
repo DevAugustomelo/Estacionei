@@ -237,7 +237,18 @@ def deletar():
     banco = sqlite3.connect('dados_estacionei.db')
     cursor = banco.cursor()
 
-    cursor.execute("DELETE * from saida")
+    cursor.execute("DELETE from saida")
+
+    cursor.execute("SELECT * FROM saida")
+    busca = cursor.fetchall()  # Retorna os dados em formato de matriz
+    Gestor.tabela_historico.setRowCount(len(busca))  # Cria linhas de acordo com a quantidade de registros no banco
+    Gestor.tabela_historico.setColumnCount(6)  # Cria a quantidade de colunas que será exibida
+
+    # Percorre a matriz da busca e organiza a forma que o resultado é exibido
+
+    for x in range(0, len(busca)):
+        for k in range(0, 6):  # 6 sendo a quantidade de colunas
+            Gestor.tabela_historico.setItem(x, k, QtWidgets.QTableWidgetItem(str(busca[x][k])))
     banco.commit()
     banco.close()
 
