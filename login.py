@@ -182,6 +182,7 @@ def banco_saida():
 
             cursor.execute("CREATE TABLE IF NOT EXISTS saida (Placa text, DataEntrada text, HoraEntrada text, DataSaida text, HoraSaida text, Permanencia text)")
             cursor.execute(f"INSERT INTO saida Values('{placa}', '{data_str_bd}', '{hora_str_bd}', '{data_saida}', '{hora_saida}', '{permanencia}')")
+            cursor.execute("DELETE from entrada WHERE Placa = '{}'".format(placa))
 
             banco.commit()
             banco.close()
@@ -233,12 +234,10 @@ def historico():
 
 
 def deletar():
-    placa = Gestor.line_placa_saida.text()
-
     banco = sqlite3.connect('dados_estacionei.db')
     cursor = banco.cursor()
 
-    cursor.execute("DELETE from entrada WHERE Placa = '{}'".format(placa))
+    cursor.execute("DELETE * from saida")
     banco.commit()
     banco.close()
 
@@ -260,7 +259,7 @@ Cadastro.btn_cadastrar.clicked.connect(cadastrar)
 Gestor.pushButton_2.clicked.connect(logout)
 Gestor.btn_ok_entrada.clicked.connect(banco_entrada)
 Gestor.btn_ok_saida.clicked.connect(banco_saida)
-Gestor.btn_ok_saida.clicked.connect(deletar)
+Gestor.btn_limpar.clicked.connect(deletar)
 Gestor.btn_atualizar.clicked.connect(consulta)
 Gestor.btn_atualizar2.clicked.connect(historico)
 
