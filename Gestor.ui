@@ -942,7 +942,7 @@ background-color: rgb(255, 62, 24);
        <string>ATUALIZAR</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="btn_limpar">
       <property name="geometry">
        <rect>
         <x>644</x>
