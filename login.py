@@ -10,7 +10,6 @@ def data_str(x, y):
     return entrada
 
 
-
 def data():
     data_atual = datetime.now()
     data_formatada = data_atual.strftime('%d/%m/%Y')
@@ -29,14 +28,13 @@ def formatar(x):
     tupla = tuple(lista)
     lista2 = []
     lista2.append(tupla)
-    resultado = lista2[0:1]
+    resultado = lista2
     return resultado
-
 
 
 def validar():
     Login.lbl_erro.setText("")
-    usuario = Login.line_user.text()
+    usuario = Login.line_user.text().strip()
     senha = Login.line_senha.text()
     conexao_banco = sqlite3.connect('dados_estacionei.db')
     cursor = conexao_banco.cursor()
@@ -62,9 +60,6 @@ def validar():
             Login.line_senha.setText("")
         else:
             Login.lbl_erro.setText("!Senha incorreta!")
-
-
-
 
 
 def logout():
@@ -112,35 +107,49 @@ def cadastrar():
         Cadastro.lbl_erro.setText("!As senhas digitadas são distintas!")
 
 
+def forma(x):
+    a = x[0][0]
+    y = []
+    y.append(a)
+    return y
+
 
 def banco_entrada():
-    placa = Gestor.line_placa_entrada.text()
+    placa = Gestor.line_placa_entrada.text().upper()
     data_entrada = data()
     hora_entrada = hora()
 
+    banco = sqlite3.connect('dados_estacionei.db')
+    cursor = banco.cursor()
+    cursor.execute("SELECT Placa FROM entrada WHERE Placa = '{}'".format(placa))
+    placa_bd = cursor.fetchall()
+    #placa_banco = forma(placa_bd)
+    banco.close()
+
     if placa == "":
         Gestor.lbl_erro.setText("* Digite a Placa antes de confirmar")
+
+    elif placa_bd != [] and placa == placa_bd[0][0]:
+        Gestor.lbl_erro.setText("* !Esta placa já existe!")
 
     else:
         try:
             banco = sqlite3.connect('dados_estacionei.db')
             cursor = banco.cursor()
-            cursor.execute("CREATE TABLE IF NOT EXISTS entrada (Placa text, DataEntrada text, HoraEntrada text)")
             cursor.execute(f"INSERT INTO entrada Values('{placa}','{data_entrada}', '{hora_entrada}')")
             banco.commit()
             banco.close()
-            Gestor.line_placa_entrada.setText("")
-            Gestor.lbl_data.setText(data())
-            Gestor.lbl_hora.setText(hora())
-
             Gestor.lbl_erro.setText("<< Dados inseridos com sucesso >>")
 
-        except sqlite3.Error as erro:
-            Gestor.lbl_erro.setText("!Ocorreu um erro inesperado!", erro)
+            Gestor.lbl_data.setText(data())
+            Gestor.lbl_hora.setText(hora())
+            Gestor.line_placa_entrada.setText("")
+        except Exception as erro:
+            print("Erro Inesperado: ", erro)
 
 
 def banco_saida():
-    placa = Gestor.line_placa_saida.text()
+    placa = Gestor.line_placa_saida.text().upper()
     data_saida = data()
     hora_saida = hora()
 
@@ -150,15 +159,11 @@ def banco_saida():
     cursor.execute("SELECT Placa FROM entrada WHERE Placa = '{}'".format(placa))
     placa_bd = cursor.fetchall()
     banco.close()
-    # print(placa)
-    # print(placa_bd)
-    # print(formatar(placa))
-
 
     if placa == "":
         Gestor.lbl_erro_2.setText("* Digite a Placa antes de confirmar")
 
-    elif formatar(placa) != placa_bd:
+    elif []:
         Login.lbl_erro_2.setText("!Placa não cadastrada!")
 
 
@@ -194,9 +199,8 @@ def banco_saida():
 
             Gestor.lbl_erro_2.setText("<< Atualizado com sucesso >>")
 
-        except sqlite3.Error as erro:
-            Gestor.lbl_erro_2.setText("!Ocorreu um erro inesperado!", erro)
-
+        except Exception as erro:
+            Gestor.lbl_erro_2.setText("!Esta Placa não teve entrada!")
 
 
 def consulta():
