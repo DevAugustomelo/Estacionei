@@ -158,7 +158,7 @@ def banco_saida():
     if placa == "":
         Gestor.lbl_erro_2.setText("* Digite a Placa antes de confirmar")
 
-    elif formatar(placa)[0] not in placa_bd:
+    elif formatar(placa) != placa_bd:
         Login.lbl_erro_2.setText("!Placa não cadastrada!")
 
 
@@ -191,7 +191,7 @@ def banco_saida():
             Gestor.lbl_data_saida.setText(data())
             Gestor.lbl_hora_saida.setText(hora())
 
-            Gestor.lbl_erro_2.setText("<< Dados inseridos com sucesso >>")
+            Gestor.lbl_erro_2.setText("<< Atualizado com sucesso >>")
 
         except sqlite3.Error as erro:
             Gestor.lbl_erro_2.setText("!Ocorreu um erro inesperado!", erro)
@@ -233,7 +233,16 @@ def historico():
 
 
 def deletar():
-    pass
+    placa = Gestor.line_placa_saida.text()
+
+    banco = sqlite3.connect('dados_estacionei.db')
+    cursor = banco.cursor()
+
+    cursor.execute("DELETE from entrada WHERE Placa = '{}'".format(placa))
+    banco.commit()
+    banco.close()
+
+
 
 
 app = QtWidgets.QApplication([])
