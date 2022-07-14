@@ -243,8 +243,6 @@ def deletar():
     banco.close()
 
 
-
-
 app = QtWidgets.QApplication([])
 
 Login = uic.loadUi("Login.ui")

@@ -90,7 +90,7 @@ background-color: rgb(255, 62, 24);
      <enum>QTabWidget::North</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <property name="iconSize">
      <size>
@@ -905,8 +905,8 @@ background-color: rgb(255, 62, 24);
        <rect>
         <x>10</x>
         <y>390</y>
-        <width>91</width>
-        <height>31</height>
+        <width>90</width>
+        <height>30</height>
        </rect>
       </property>
       <property name="font">
@@ -940,6 +940,48 @@ background-color: rgb(255, 62, 24);
       </property>
       <property name="text">
        <string>ATUALIZAR</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>644</x>
+        <y>390</y>
+        <width>141</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+background-color: rgb(170, 0, 0);
+color: rgb(255, 255, 255);
+border-radius: 12px;
+border-style: outset;
+border-width: 2px;
+border-color: rgb(190, 190, 42);
+}
+
+QPushButton:hover {
+border-style: outset;
+border-width: 2px;
+border-color: rgb(199, 202, 2);
+background-color: rgb(200, 31, 8);
+}
+
+QPushButton:pressed {
+background-color: rgb(255, 62, 24);
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+      </property>
+      <property name="text">
+       <string>LIMPAR HISTÓRICO</string>
       </property>
      </widget>
     </widget>
