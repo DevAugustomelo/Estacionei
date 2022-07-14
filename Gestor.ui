@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>856</width>
+    <width>1060</width>
     <height>610</height>
    </rect>
   </property>
@@ -34,7 +34,7 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>350</x>
       <y>540</y>
       <width>151</width>
       <height>51</height>
@@ -78,7 +78,7 @@ background-color: rgb(255, 62, 24);
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>900</width>
+      <width>1041</width>
       <height>491</height>
      </rect>
     </property>
@@ -90,7 +90,7 @@ background-color: rgb(255, 62, 24);
      <enum>QTabWidget::North</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -860,7 +860,7 @@ background-color: rgb(255, 62, 24);
         <x>0</x>
         <y>30</y>
         <width>901</width>
-        <height>341</height>
+        <height>331</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -903,7 +903,7 @@ background-color: rgb(255, 62, 24);
      <widget class="QPushButton" name="btn_atualizar2">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>30</x>
         <y>390</y>
         <width>90</width>
         <height>30</height>

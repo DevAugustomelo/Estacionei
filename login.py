@@ -22,16 +22,6 @@ def hora():
     return hora_formatada
 
 
-def formatar(x):
-    lista = []
-    lista.append(x)
-    tupla = tuple(lista)
-    lista2 = []
-    lista2.append(tupla)
-    resultado = lista2
-    return resultado
-
-
 def validar():
     Login.lbl_erro.setText("")
     usuario = Login.line_user.text().strip()
@@ -43,7 +33,7 @@ def validar():
     login_bd = cursor.fetchall()
     conexao_banco.close()
 
-    if formatar(usuario) != login_bd:
+    if len(login_bd) < 1:
         Login.lbl_erro.setText("!Login não cadastrado!")
     else:
         conexao_banco = sqlite3.connect('dados_estacionei.db')
@@ -83,12 +73,12 @@ def cadastrar():
     cursor = banco.cursor()
     cursor.execute("SELECT nome FROM dados WHERE nome = '{}'".format(nome))
     nome_bd = cursor.fetchall()
-    banco.close()
+
 
     if nome == "" or login == "" or senha == "" or repetir_senha == "":
         Cadastro.lbl_erro.setText("* Todos os campos são obrigatórios")
 
-    elif nome == nome_bd[0][0]:
+    elif len(nome_bd) > 0 and nome == nome_bd[0][0]:
         Cadastro.lbl_erro.setText("* Usuário já está cadastrado.")
 
     # condicional e criação do banco de dados
@@ -114,12 +104,6 @@ def cadastrar():
         Cadastro.lbl_erro.setText("!As senhas digitadas são distintas!")
 
 
-def forma(x):
-    a = x[0][0]
-    y = []
-    y.append(a)
-    return y
-
 
 def banco_entrada():
     placa = Gestor.line_placa_entrada.text().upper()
@@ -130,7 +114,7 @@ def banco_entrada():
     cursor = banco.cursor()
     cursor.execute("SELECT Placa FROM entrada WHERE Placa = '{}'".format(placa))
     placa_bd = cursor.fetchall()
-    #placa_banco = forma(placa_bd)
+
     banco.close()
 
     if placa == "":
@@ -170,8 +154,8 @@ def banco_saida():
     if placa == "":
         Gestor.lbl_erro_2.setText("* Digite a Placa antes de confirmar")
 
-    elif []:
-        Login.lbl_erro_2.setText("!Placa não cadastrada!")
+    elif len(placa_bd) < 1:
+        Gestor.lbl_erro_2.setText("!Placa não cadastrada!")
 
 
     else:
