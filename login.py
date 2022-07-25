@@ -22,6 +22,26 @@ def hora():
     return hora_formatada
 
 
+def placa_padrao(placa):
+
+    import string
+
+    letras = list(string.ascii_uppercase)
+    letras = letras[0:10]
+
+    a = placa[0:3].isalpha()
+    b = placa[3:7].isdigit()
+    c = placa[3].isdigit() and placa[4].isalpha() and placa[5:7].isdigit()
+
+    if a and b:
+        return "clássico"
+
+    elif a and c and placa[4] in letras:
+        return "Mercosul"
+    else:
+        return "fora do padrão"
+
+
 def validar():
     Login.lbl_erro.setText("")
     usuario = Login.line_user.text().strip()
@@ -117,8 +137,11 @@ def banco_entrada():
 
     banco.close()
 
-    if placa == "":
-        Gestor.lbl_erro.setText("* Digite a Placa antes de confirmar")
+    if len(placa) != 7:
+        Gestor.lbl_erro.setText("* Verifique a quantidade de Caracteres.")
+
+    elif placa_padrao(placa) == "fora do padrão":
+        Gestor.lbl_erro.setText("!Fora do padrão Clássico ou Mercosul")
 
     elif placa_bd != [] and placa == placa_bd[0][0]:
         Gestor.lbl_erro.setText("* !Esta placa já existe!")
